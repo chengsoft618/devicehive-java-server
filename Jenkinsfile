@@ -2,7 +2,7 @@ properties([
   buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '7', numToKeepStr: '7'))
 ])
 
-def test_branches = ["development", "master"]
+def test_branches = ["development", "master", "parallel-tests"]
 def publish_branches = ["development", "master"]
 def deploy_branches = ["development"]
 
