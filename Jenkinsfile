@@ -15,6 +15,7 @@ stage('Build jars') {
       checkout scm
       sh 'mvn clean package -DskipTests'
       sh 'mvn test'
+      step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
       def artifacts = 'devicehive-backend/target/devicehive-backend-*-boot.jar, devicehive-auth/target/devicehive-auth-*-boot.jar, devicehive-plugin/target/devicehive-plugin-*-boot.jar, devicehive-frontend/target/devicehive-frontend-*-boot.jar, devicehive-common/target/devicehive-common-*-shade.jar'
       archiveArtifacts artifacts: artifacts, fingerprint: true, onlyIfSuccessful: true
       stash includes: artifacts, name: 'jars'
