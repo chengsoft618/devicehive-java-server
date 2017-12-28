@@ -70,7 +70,7 @@ if (test_branches.contains(env.BRANCH_NAME)) {
         }
       }
     },
-    ws-proxy: {
+    wsproxy: {
       stage('Run regression tests with ws-proxy'){
         node('tests-runner'){
           try {
